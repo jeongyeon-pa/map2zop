@@ -93,11 +93,11 @@ button{font:inherit;color:inherit}
 .in{opacity:0;transform:scale(.9);transition:opacity .5s ease .6s,transform .8s cubic-bezier(.2,.8,.2,1) .5s;z-index:1;pointer-events:none}
 .stage.entered .out{transform:scale(3.4);opacity:0;pointer-events:none}
 .stage.entered .in{opacity:1;transform:none;pointer-events:auto}
-.doorhot{position:absolute;left:35%;top:56%;width:22.5%;height:29.5%;border:0;background:none;cursor:pointer;border-radius:40% 40% 8px 8px}
-.doorhot:before{content:"";position:absolute;inset:6% 10%;border-radius:inherit;border:4px solid var(--accent);opacity:0;animation:ping 1.8s ease-out infinite}
+.doorhot{position:absolute;left:34.5%;top:63%;width:21%;aspect-ratio:1/1;border:0;background:none;cursor:pointer;border-radius:50%}
+.doorhot:before{content:"";position:absolute;inset:4%;border-radius:50%;border:4px solid var(--accent);opacity:0;animation:ping 1.8s ease-out infinite}
 @keyframes ping{0%{opacity:.9;transform:scale(.9)}100%{opacity:0;transform:scale(1.25)}}
 .doorhot:focus-visible{outline:4px solid var(--maroon);outline-offset:4px}
-.bub{position:absolute;right:-118%;top:-8%;white-space:nowrap;background:var(--maroon);color:var(--cream);font-weight:900;font-size:17px;padding:8px 16px;border-radius:16px 16px 16px 2px;box-shadow:4px 4px 0 rgba(58,18,12,.3);animation:bob 1.6s ease-in-out infinite}
+.bub{position:absolute;left:62%;top:-52%;margin-left:-58px;white-space:nowrap;background:var(--maroon);color:var(--cream);font-weight:900;font-size:17px;padding:8px 16px;border-radius:16px 16px 16px 2px;box-shadow:4px 4px 0 rgba(58,18,12,.3);animation:bob 1.6s ease-in-out infinite}
 @keyframes bob{50%{transform:translateY(-6px)}}
 .back{position:absolute;left:0;top:0;border:0;background:var(--maroon);color:var(--cream);font-weight:700;border-radius:999px;padding:7px 16px;cursor:pointer;z-index:3}
 #rooms .scene{position:absolute!important;transform:none!important;display:block;padding:0;border-radius:6px}
@@ -119,10 +119,15 @@ button{font:inherit;color:inherit}
 .dhero{display:none}
 .facts2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;max-width:980px;margin:22px auto 0}
 .facts2 .float{position:static;width:auto!important}
+.axis{display:grid;grid-template-columns:118px minmax(0,1fr) 56px;gap:10px;font-size:11px;color:var(--mute);margin:-2px 0 6px}
+.axis span{display:flex;justify-content:space-between}.axis b{font-weight:500}
+.bar.net .rg{background:repeating-linear-gradient(135deg,var(--maroon) 0 4px,rgba(94,26,18,.45) 4px 8px)}
+.bar .nm em{display:block;font-style:normal;font-size:10px;font-weight:500;color:var(--mute);line-height:1.2}
+.float .bar .tr{background:repeating-linear-gradient(90deg,rgba(94,26,18,.12) 0 1px,transparent 1px 33.33%),rgba(94,26,18,.08)}
 @media (max-width:860px){
   #rooms .scene .tag{font-size:8px;padding:1px 5px;top:3%;left:2%}
   #rooms .scene .badge{width:20px;height:20px;font-size:11px;border-width:2px;left:2%;top:4%}
-  .bub{font-size:13px;padding:5px 10px;right:auto;left:50%;top:-34%;transform:translateX(-50%);animation:none}
+  .bub{font-size:12px;padding:4px 9px;top:-50%;margin-left:-40px;animation:none}
   .back{font-size:12px;padding:4px 10px}
   .dhero{display:block;width:62%;margin:0 auto 6px}
   .facts2{grid-template-columns:minmax(0,1fr)}
@@ -135,7 +140,7 @@ button{font:inherit;color:inherit}
 .hub .ht{font-size:22px;font-weight:900;color:var(--maroon)}
 .hub .hs{font-size:13px;color:var(--mute);text-align:center;max-width:250px}
 .hub .go{border:0;background:var(--maroon);color:var(--cream);font-weight:700;border-radius:999px;padding:6px 16px;cursor:pointer}
-@media (min-width:861px){ .hero > .ends, .hero > .hint{display:none} }
+@media (min-width:861px){ .hero > .ends{display:none} }
 @media (max-width:860px){ .hub{position:static;transform:none;width:min(84vw,340px);height:min(84vw,340px);margin:0 auto} }
 .float{position:absolute;z-index:2;background:rgba(255,243,214,.92);border:3px solid var(--maroon);border-radius:16px;padding:14px 18px 12px;box-shadow:7px 7px 0 var(--maroon)}
 .float .tab{margin-bottom:10px;font-size:15px}
@@ -190,6 +195,7 @@ button{font:inherit;color:inherit}
 .ing .ico svg{width:38px;height:38px}
 .ing .n{font-weight:900;font-size:15px}
 .ing .f{font-size:12px;color:var(--cream2)}
+.ing .c{display:none}
 
 .src{padding:30px 0 56px;font-size:12px;color:var(--maroon);line-height:1.9}
 .src b{font-size:13px}
@@ -233,7 +239,14 @@ button{font:inherit;color:inherit}
   .card .t{font-size:17px}
   .facts{grid-template-columns:1fr}
   .bar{grid-template-columns:96px minmax(0,1fr) 80px}
-  .shelf{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .shelf{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;padding:16px 12px}
+  .ing{flex-direction:row;gap:8px;padding:6px 12px 6px 6px;border-radius:999px;background:rgba(255,243,214,.08);min-height:0}
+  .ing .ico{width:32px;height:32px;border-radius:50%}
+  .ing .ico svg{width:18px;height:18px}
+  .ing .n{font-size:13px}
+  .ing .f{display:none}
+  .ing .c{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:var(--accent);color:#fff;font-size:11px;font-weight:900}
+  .shelf:after{content:"数字 = 用到这项能力的场景数";flex-basis:100%;text-align:center;font-size:11px;color:var(--cream2);margin-top:2px}
   .drawer{top:auto;bottom:0;height:84vh;width:100%;border-radius:20px 20px 0 0;transform:translateY(105%)}
 }
 </style>
@@ -273,7 +286,7 @@ button{font:inherit;color:inherit}
 
   <div class="src">
     <b>资料来源</b><br>
-    猎聘公开招聘信息（2026.11）· 科技日报（2026.5 / 2026.9 / 2026.10）· 36氪（2026）· 新华网、老虎证券（2026.2）· 站酷 · IDC（2025.9）· 界面新闻（2026.9）· iF Design · 具身智能之心 × 诺亦腾机器人 直播圆桌 · 海外招聘：Amazon Fauna、Kiwibot、Agility Robotics、Humanoid。<br>
+    猎聘公开招聘信息（2026.11）· 科技日报（2026.5 / 2026.9 / 2026.10）· 量子位（2026）· 新华网、央视新闻（2026.2）· 站酷 · IDC（2025.9）· 界面新闻（2026.7）· CES 2024 创新奖 · 具身智能之心 × 诺亦腾机器人 直播圆桌 · 海外招聘：Amazon Fauna、Kiwibot、Agility Robotics、Humanoid。<br>
     标注“网络整理”的薪资来自 CSDN《具身智能相关岗位清单》，原文未注明来源，仅供参考。海外薪资仅作趋势参考。
   </div>
 </div>
@@ -310,35 +323,35 @@ function ico(k){ return '<svg viewBox="0 0 48 48" aria-hidden="true">'+ICONS[k]+
 var FIELDS = [
   { no:1, icon:'studio', name:'数据与仿真', place:'动捕工作室', job:'3D 建模 · 仿真 · 动捕数据', max:32, min:9, pay:'月薪 9–32K', payNote:'3D 建模与仿真岗（网络整理）',
     tech:'把人的动作捕捉下来，变成机器人可以学习的数据；再在虚拟世界里训练机器人。',
-    roles:[{n:'3D 建模 / 数字孪生设计师',w:'机器人与场景三维建模、仿真场景搭建（2026 新职业相关）',s:'常见技能：3ds Max、Blender · 月薪 9–20K'},{n:'仿真工程师',w:'搭建仿真环境，批量生成训练数据',s:'游戏 / 3D 背景可转 · 应届 18–32K'},{n:'动捕 / 遥操作数据采集员',w:'佩戴设备完成日常动作，录下人体数据',s:'门槛低 · 日薪 240–370 元'}],
+    roles:[{n:'3D 建模 / 数字孪生建模',w:'机器人与场景三维建模、仿真场景搭建（对应 2026 新职业：数字孪生工程技术人员、工业产品数字建模师）',s:'常见技能：3ds Max、Blender · 月薪 9–20K'},{n:'仿真工程师',w:'搭建仿真环境，批量生成训练数据',s:'游戏 / 3D 背景可转 · 应届 18–32K'},{n:'动捕 / 遥操作数据采集员',w:'佩戴设备完成日常动作，录下人体数据（属新职业“具身智能机器人应用技术员”范围）',s:'门槛低 · 日薪 240–370 元'}],
     cases:['视频案例：诺亦腾机器人——把高精度人类动作“编译”成机器人可学习的数据','2026.9 人社部等发布新职业：数字孪生工程技术人员、工业产品数字建模师、具身智能机器人应用技术员'],
-    src:'网络整理；界面新闻 2026.9；科技日报 2026.9；直播圆桌' },
-  { no:2, icon:'robot', name:'人形 / 服务机器人', place:'工厂 · 仓库', job:'机器人交互（HRI）· 机器人界面', max:55, min:25, pay:'月薪 25–55K · 15 薪', payNote:'优理奇机器人（苏州）人机交互岗',
+    src:'网络整理；界面新闻 2026.7；科技日报 2026.9；直播圆桌' },
+  { no:2, icon:'robot', name:'人形 / 服务机器人', place:'工厂 · 仓库', job:'机器人交互（HRI）· 机器人界面', max:50, min:14, pay:'月薪 14–50K', payNote:'上海机器人 / 具身智能方向人机交互设计岗公开招聘（猎聘 2026.11）',
     tech:'机器人在工厂、仓库里和人一起工作，需要用语音、屏幕和动作告诉人自己在做什么。',
     roles:[{n:'机器人交互（HRI）设计师',w:'设计机器人的语音对话、动作提示与安全规则',s:'常见技能：交互设计、Figma、After Effects 动效、用户研究'},{n:'机器人界面设计师',w:'机器人触控屏界面、运营控制台与数据看板',s:'常见技能：UI/UX、动效、原型与可用性测试'}],
-    cases:['优理奇机器人（苏州）人机交互工程师：语音交互、触控屏 UI 与动效，月薪 25–55K·15 薪'],
-    overseas:['Agility Robotics（美国）UX/UI 设计师：机器人操作台与看板，年薪 12.8–20 万美元','Humanoid（伦敦）HRI 设计师：机器人手势与动作提示，年薪 7.5–10 万英镑'],
-    src:'猎聘 2026.11；designproject.io 海外招聘' },
+    cases:['国内已出现“机器人人机交互设计师”“AI 产品与人机交互设计师（具身智能方向）”等设计岗位','蚂蚁集团曾招聘“机器人高级体验设计师（具身智能方向）”，月薪 35–65K·15 薪（资深岗）'],
+    overseas:['海外已有机器人 UX/UI、HRI 设计师等正式岗位（Agility Robotics、Humanoid 等），如 Agility Robotics UX/UI 设计师年薪 12.8–20 万美元'],
+    src:'猎聘公开招聘信息 2026.11；designproject.io（海外招聘汇总）' },
   { no:3, icon:'home', name:'陪伴 / 消费机器人', place:'家', job:'机器人角色动画 · 屏幕表情动效', max:0,
     tech:'家里的陪伴机器人用屏幕表情、动作和声音表达情绪。',
     roles:[{n:'机器人角色动画师',w:'设计机器人的动作、情绪反应和待机动作，形成“性格”',s:'常见技能：角色动画、Maya / Blender、动作捕捉'},{n:'屏幕表情动效设计师',w:'设计机器人屏幕上的表情和微交互',s:'常见技能：After Effects、Blender、Unity'}],
-    cases:['可以科技 Loona 陪伴机器人（获 iF 设计奖）'],
-    overseas:['Amazon Fauna 机器人动画与角色设计师：年薪 16.3–28.5 万美元（纽约）','Kiwibot 2D/3D 动画与交互设计师：设计配送机器人屏幕表情与动作'],
-    osNote:'这类岗位在海外已有正式职位，国内还在形成中。', src:'iF Design；designproject.io；Kiwibot 招聘页' },
-  { no:4, icon:'car', name:'智能座舱', place:'汽车', job:'HMI 动效 · 视觉 · 交互设计', max:60, min:13, pay:'月薪 13–60K', payNote:'5 家车企与设计公司的公开招聘',
+    cases:['可以科技 Loona 陪伴机器人（获 CES 2024 创新奖）'],
+    overseas:['Amazon、Kiwibot 等公司设有机器人动画 / 交互设计岗位，资深岗年薪可达约 16–28 万美元'],
+    osNote:'这类岗位在海外已有正式职位，国内还在形成中。', src:'CES 2024 创新奖；designproject.io；Kiwibot 招聘页' },
+  { no:4, icon:'car', name:'智能座舱', place:'汽车', job:'HMI 动效 · 视觉 · 交互设计', max:60, min:13, pay:'月薪 13–60K', payNote:'赛力斯、滴滴、吉利等车企与设计公司的座舱设计岗公开招聘（猎聘 2026.11）',
     tech:'车内多屏、语音与触控交互，车辆像一个能感知和回应的“身体”。',
     roles:[{n:'HMI 动效设计师',w:'设计车机界面的过渡、反馈和动态效果',s:'常见技能：动效设计、三维界面、原型'},{n:'HMI 视觉设计师',w:'车机界面视觉、图标与三维界面风格',s:'常见技能：UI 视觉、3D 渲染'},{n:'座舱交互设计师',w:'规划驾驶场景下的操作流程与多模态交互',s:'常见技能：交互流程、用户研究'}],
-    cases:['赛力斯 HMI 视觉设计工程师：月薪 30–60K·15 薪（上海）','滴滴 界面设计师（车机 HMI）：30–45K·15 薪（北京）','吉利 高级 HMI 设计师：15–45K（宁波）','启境汽车 动效设计师（座舱 HMI）：15–30K·15 薪（广州）','优华劳斯 车载 HMI 动效设计师：13–21K（上海）'],
+    cases:['赛力斯、滴滴、吉利、启境汽车等都在招聘座舱 HMI 动效 / 视觉 / 交互设计师'],
     src:'猎聘公开招聘信息，2026.11' },
-  { no:5, icon:'glasses', name:'AI / AR 眼镜', place:'街头', job:'空间交互 · 3D UI · AR 内容', max:0,
+  { no:5, icon:'glasses', name:'AI / AR 眼镜', place:'街头', job:'空间交互 · 3D UI · AR 内容', max:60, min:30, barName:'XR 设备（参考）', pay:'月薪 30–60K · 15 薪', payNote:'参考：字节跳动 PICO（XR 头显）人机交互设计师（猎聘 2026.11）；AR 眼镜设计岗多为面议',
     tech:'眼镜戴在身上，用语音、视线和空间界面与世界交互。',
     roles:[{n:'空间交互 / 3D UI 设计师',w:'设计叠加在真实空间里的界面与操作方式',s:'常见技能：3D、Unity、空间 UI'},{n:'AR 内容创作者',w:'制作眼镜上的应用与内容',s:'常见技能：3D 建模、动效、交互原型'}],
-    cases:['Rokid 于 2026.10.27 发布 Rokid Glasses 2','Rokid Spatial Joy 2026 全球开发者大赛，奖金池 500 万元','雷鸟创新 2026 年一季度国内 AR 眼镜出货领先','Rokid 眼镜支持“看一下支付”'],
-    src:'科技日报 2026.10；36氪 2026' },
+    cases:['雷鸟创新招聘 AR 眼镜系统 UI 设计师，要求 Figma、3D 工具与 Unity','Rokid 于 2026.10.27 发布 Rokid Glasses 2','Rokid Spatial Joy 2026 全球开发者大赛，奖金池 500 万元','雷鸟创新称其 2026 年一季度国内 AR 眼镜出货第一','Rokid 眼镜支持支付宝“看一下支付”'],
+    src:'猎聘 2026.11；我爱音频网 2025.10；科技日报 2026.10；量子位 2026.6；支付宝发布 2025.6' },
   { no:6, icon:'hospital', name:'医疗康复', place:'医院', job:'康复产品设计 · 康复训练游戏', max:0,
     tech:'康复机器人贴着患者的身体工作，理解意图并配合训练。',
     roles:[{n:'康复机器人产品设计',w:'外观、结构与人机尺寸设计',s:'可迁移能力：工业设计、3D 建模'},{n:'康复训练游戏 / 界面设计',w:'把枯燥的训练变成有反馈的游戏',s:'可迁移能力：游戏设计、交互设计'}],
-    cases:['大卫逊设计 × 上海璟和：下肢康复机器人 Flexbot 的外观与结构设计','傅利叶提出“主动式人机交互”技术路线','上肢康复 VR 严肃游戏研究（西交利物浦大学）'],
+    cases:['大卫逊设计 × 上海璟和：下肢康复机器人 Flexbot 的外观与结构设计','傅利叶提出“主动式人机交互”技术路线','上肢康复 VR 严肃游戏研究（西交利物浦大学，2021）'],
     src:'站酷；科技日报 2026.5；XJTLU' },
   { no:7, icon:'school', name:'教育', place:'学校', job:'教育机器人课程内容 · 互动设计', max:0,
     tech:'教育机器人用语音、视觉和动作陪孩子学习。',
@@ -348,8 +361,8 @@ var FIELDS = [
   { no:8, icon:'stage', name:'文娱演出', place:'剧场', job:'机器人节目创意 · 动作编排', max:0,
     tech:'机器人登上舞台，和人一起表演。',
     roles:[{n:'机器人节目创意 / 动作编排',w:'设计机器人表演的主题、桥段与动作节奏',s:'可迁移能力：动画节奏、编导思维、舞台视觉'}],
-    cases:['2026 春晚《武BOT》：宇树 G1、H2 机器人与武术演员联排','节目以“未来武术学校”为主题，“醉倒后翻身”桥段灵感来自排练中机器人摔倒','动作根据音乐和演员调整，精确到 0.1 秒'],
-    src:'新华网 2026.2；老虎证券 2026.2' }
+    cases:['2026 春晚《武BOT》：宇树 G1、H2 机器人与武术演员同台表演','节目以“未来武馆”为主题，“醉倒后翻身”桥段灵感来自排练中机器人摔倒','团队为 0.1 秒的动作节奏反复打磨，配合音乐和演员调整'],
+    src:'新华网 2026.2；央视新闻（扬子晚报转载）2026.2' }
 ];
 
 var SKILLS = [
@@ -418,7 +431,7 @@ function zoomOut(){
 zoomEl.addEventListener('click',function(){ close(); });
 var facts2=document.getElementById('facts2');
 var fl1=document.createElement('div'); fl1.className='float';
-fl1.innerHTML='<div class="tab">薪资参考<small>SALARY</small></div><div id="bars"></div><div class="none">暂无国内公开薪资：陪伴机器人 · AI/AR 眼镜 · 医疗康复 · 教育 · 文娱演出</div>';
+fl1.innerHTML='<div class="tab">设计岗月薪<small>SALARY</small></div><div class="axis"><i></i><span><b>0</b><b>20K</b><b>40K</b><b>60K</b></span></div><div id="bars"></div><div class="none">实色：猎聘公开招聘（2026.11）；斜线：网络整理。样本较少，仅供参考。XR 设备为 AR 眼镜相近岗位。<br>陪伴机器人 · 医疗康复 · 教育 · 文娱演出：新兴领域，暂无设计岗公开薪资。</div>';
 facts2.appendChild(fl1);
 var fl2=document.createElement('div'); fl2.className='float';
 fl2.innerHTML='<div class="tab">2026 新职业<small>NEW JOBS</small></div><ul><li><b>具身智能机器人应用技术员</b></li><li><b>数字孪生工程技术人员</b></li><li><b>工业产品数字建模师</b></li></ul><div class="none" style="margin-top:6px">人社部等发布，科技日报 2026.9</div>';
@@ -426,9 +439,9 @@ facts2.appendChild(fl2);
 
 // salary bars
 var bars=document.getElementById('bars');
-FIELDS.filter(function(f){return f.max;}).sort(function(a,b){return b.max-a.max;}).forEach(function(f){
-  var d=document.createElement('div'); d.className='bar';
-  d.innerHTML='<span class="nm">'+esc(f.name)+'</span><span class="tr"><span class="rg" style="left:'+(f.min/60*100)+'%;right:'+(100-f.max/60*100)+'%"></span></span><span class="v">'+f.min+'–'+f.max+'K</span>';
+FIELDS.filter(function(f){return f.max;}).sort(function(a,b){var na=/网络整理/.test(a.payNote),nb=/网络整理/.test(b.payNote); return na!==nb?(na?1:-1):b.max-a.max;}).forEach(function(f){
+  var d=document.createElement('div'); d.className='bar'+(/网络整理/.test(f.payNote)?' net':'');
+  d.innerHTML='<span class="nm">'+esc(f.barName||f.name)+(/网络整理/.test(f.payNote)?'<em>网络整理</em>':'')+'</span><span class="tr"><span class="rg" style="left:'+(f.min/60*100)+'%;right:'+(100-f.max/60*100)+'%"></span></span><span class="v">'+f.min+'–'+f.max+'K</span>';
   bars.appendChild(d);
 });
 
@@ -436,7 +449,7 @@ FIELDS.filter(function(f){return f.max;}).sort(function(a,b){return b.max-a.max;
 var shelf=document.getElementById('shelf'), skillBtns=[];
 SKILLS.forEach(function(s){
   var b=document.createElement('button'); b.className='ing'; b.setAttribute('aria-pressed','false');
-  b.innerHTML='<span class="ico slot" data-slot="D_'+s.k+'">'+ico(s.k)+'</span><span class="n">'+esc(s.n)+'</span><span class="f">用于 '+s.ids.length+' 个场景</span>';
+  b.innerHTML='<span class="ico slot" data-slot="D_'+s.k+'">'+ico(s.k)+'</span><span class="n">'+esc(s.n)+'</span><span class="c">'+s.ids.length+'</span><span class="f">用于 '+s.ids.length+' 个场景</span>';
   b.addEventListener('click',function(){
     var was=b.getAttribute('aria-pressed')==='true';
     skillBtns.forEach(function(x){x.setAttribute('aria-pressed','false');});
@@ -452,7 +465,7 @@ function open(no){
   var f=FIELDS.filter(function(x){return x.no===no;})[0]; if(!f) return;
   document.getElementById('d-k').textContent=f.place;
   document.getElementById('d-title').textContent=f.name;
-  var tags=f.max?'<span class="tag hot">有国内公开薪资</span>':'<span class="tag">新兴领域 · 暂无国内公开薪资</span>';
+  var tags=f.max?(/网络整理/.test(f.payNote)?'<span class="tag">薪资为网络整理 · 仅供参考</span>':'<span class="tag hot">有国内公开薪资</span>'):'<span class="tag">新兴领域 · 暂无国内公开薪资</span>';
   if(f.overseas) tags+='<span class="tag">含海外参考</span>';
   document.getElementById('d-tags').innerHTML=tags;
   var h='';
