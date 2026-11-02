@@ -79,6 +79,10 @@ button{font:inherit;color:inherit}
 .head2 .lead{margin:0 auto;max-width:560px;font-size:clamp(14px,1.6vw,17px);color:var(--text)}
 .head2 .lead b{color:var(--accent)}
 .head2 .sub{margin-top:8px;font-size:14px;font-weight:700;color:var(--maroon)}
+/* first page: only title + house */
+body:not(.entered) .facts2, body:not(.entered) .ingr, body:not(.entered) .src, body:not(.entered) #hint{display:none}
+body.entered .facts2, body.entered .ingr, body.entered .src{animation:fadein .6s ease .7s both}
+@keyframes fadein{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
 /* ===== house ===== */
 .stage{position:relative;width:min(900px,100%,calc(100vh - 60px));aspect-ratio:1/1;margin:0 auto}
 .sq{position:absolute;left:0;right:0;top:50%;transform:translateY(-50%);aspect-ratio:1/1}
@@ -402,8 +406,8 @@ FIELDS.forEach(function(f){
   roomsEl.appendChild(b);
 });
 var stage=document.getElementById('stage');
-function enter(){ stage.classList.add('entered'); document.getElementById('inside').setAttribute('aria-hidden','false'); document.getElementById('outside').setAttribute('aria-hidden','true'); document.getElementById('hint').textContent='八个房间 = 八个场景。点击房间，查看岗位、所需能力与真实案例'; }
-function leave(){ stage.classList.remove('entered'); document.getElementById('inside').setAttribute('aria-hidden','true'); document.getElementById('outside').setAttribute('aria-hidden','false'); document.getElementById('hint').textContent='点击门口的机器人，走进具身智能小屋'; }
+function enter(){ stage.classList.add('entered'); document.body.classList.add('entered'); document.getElementById('inside').setAttribute('aria-hidden','false'); document.getElementById('outside').setAttribute('aria-hidden','true'); document.getElementById('hint').textContent='八个房间 = 八个场景。点击房间，查看岗位、所需能力与真实案例'; }
+function leave(){ stage.classList.remove('entered'); document.body.classList.remove('entered'); document.getElementById('inside').setAttribute('aria-hidden','true'); document.getElementById('outside').setAttribute('aria-hidden','false'); document.getElementById('hint').textContent='点击门口的机器人，走进具身智能小屋'; }
 document.getElementById('enter').addEventListener('click',function(e){ e.stopPropagation(); enter(); setTimeout(function(){ document.querySelector('#rooms .scene').focus({preventScroll:true}); },1100); });
 document.getElementById('back').addEventListener('click',function(e){ e.stopPropagation(); leave(); });
 // zoom (B): fly the room picture to the free area beside the drawer
